@@ -1,0 +1,184 @@
+:root {
+    --dark: #1a1a1a;
+    --white: #ffffff;
+    --primary: rgba(46, 57, 157, 0.9);
+    --warning: rgba(46, 57, 157, 0.3);
+    --danger: #000000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    letter-spacing: .03rem;
+    margin: 0;
+    margin-bottom: 0;
+}
+
+.navbar {
+    background-color: black !important;
+}
+
+br {
+    font-size: 20px;
+    color: var(--white) !important;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+}
+
+h2,
+h3,
+.navbar-brand {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    font-size: 30px;
+}
+
+#first h1 {
+    font-size: 40px;
+    color: var(--white);
+}
+
+#first h1:hover {
+    font-size: 41px;
+}
+
+#first p {
+    color: var(--white);
+}
+
+#first .container {
+    background-color: black !important;
+}
+
+#first .divider {
+    border-bottom: 2px solid var(--white) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-dark {
+    background-color: var(--dark) !important;
+}
+
+.border-danger {
+    border-color: var(--danger) !important;
+}
+
+
+.btn {
+    color: #000000 !important;
+    border: 1.5px solid #000000;
+    min-width: 30px;
+}
+
+
+.divider {
+    border-bottom: 2px solid black;
+}
+
+#inicio .divider {
+    border-bottom: 2px solid black;
+}
+
+.text a {
+    color: black;
+    font-size: 20px;
+    border-left: 3px solid black;
+    border-top: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    padding: 12px 25px;
+    letter-spacing: 3px;
+    background-color: none;
+}
+
+.carousel__contenedor {
+    position: relative;
+}
+
+.carousel__anterior,
+.carousel__siguiente {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: none;
+    top: calc(50% - 35px);
+    cursor: pointer;
+    line-height: 30px;
+    text-align: center;
+    background: none;
+    color: var(--primary);
+    opacity: 40%;
+}
+
+.carousel__anterior:hover,
+.carousel__siguiente:hover {
+    opacity: 100%;
+}
+
+.carousel__anterior {
+    left: -30px;
+}
+
+.carousel__siguiente {
+    right: -30px;
+}
+
+.carousel__lista {
+    overflow: hidden;
+}
+
+.carousel__elemento {
+    text-align: center;
+}
+
+.carousel__indicadores .glider-dot {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: var(--primary);
+    opacity: .2;
+    border-radius: 0;
+}
+
+.carousel__indicadores .glider-dot:hover {
+    opacity: .5;
+}
+
+.carousel__indicadores .glider-dot.active {
+    opacity: 1;
+}
+
+.contenedor {
+    max-width: 1200px !important;
+    width: 90% !important;
+    margin: auto !important;
+}
+
+
+.divider {
+    border-bottom: 2px solid black;
+}
+
+.divider1 {
+    border-bottom: 2px solid black;
+    margin-left: 20% !important;
+    margin-right: 20% !important;
+}
+
+input:invalid {
+
+    color: black !important;
+}
+
+

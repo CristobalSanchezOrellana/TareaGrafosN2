@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTFd-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/automatas.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+    
+    <title>Trabajo 2 Grafos</title>
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Trabajo N2 Grafos</h1>
+        <div class="row pt-3 justify-content-center">
+            <div class="col-md-6 mx-5">
+                <p> 1. Tipo de autómata:</p>
+                <select class="form-control mb-3" id="tipoAutomata">
+                    <option id="1AFD" value="AFD">2 AFD</option>
+                    <option id="1AFND" value="AFND">2 AFND</option>
+                    <option id="1AFD/AFND" value="AFD/AFND">1 AFD y 1 AFND</option>
+                </select>
+                <p> 2. Numero de estados de los automatas</p>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input class="form-control" type="number" id="Automata1"
+                                    placeholder="Numero de estados - automata 1" required>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input class="form-control" type="number" id="Automata2"
+                                    placeholder="Numero de estados - automata 2" required>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <p>3. Alfabeto de entrada, cantidad de variables que tendra:</p>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input class="form-control" type="number" id="nEntradas"
+                                    placeholder="Numero de variables del lenguaje - automata 1" required>
+                                <input class="form-control mt-1" type="number" id="nEntradas2"
+                                    placeholder="Numero de variables del lenguaje - automata 2" required>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <a onclick="addFormulario()" id="addFormulario()" class="btn btn-outline-light px-2 mb-3"
+                        style="text-align: center; max-width: 850px;">Ingresar</a>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+        <div class="container">
+
+            <div class="row justify-content-center mx-5">
+                <div id="mostrarmsj"></div>
+                <div class="mx-4" id="formulario"></div>
+                <div class="mx-4" id="formulario2"></div>
+                <div class="mx-4" id="mostrarLenguaje"></div>
+                <div class="mx-4" id="mostrarLenguaje2"></div>
+            </div>
+            <div class="mt-2 align-content-center" id="confirmar"></div>
+        </div>
+        <div id="boxs" class="row mx-2">
+
+            <div class="col-6 border-right pb-5">
+                <h2 class="text-center mt-1">Tabla de Transicion Automata 1</h2>
+                <div class="pt-4" id="tablaTransicion1"></div>
+            </div>
+            <div class="col-6 pb-5">
+                <h2 class="text-center mt-1">Tabla de Transicion Automata 2</h2>
+                <div class="pt-4" id="tablaTransicion2"></div>
+            </div>
+
+            <a onclick="confirmarTRA()" class="btn btn-outline-light px-2 mb-3 mt-4" id="auto2"
+                style="text-align: center; max-width: 850px;"> Aceptar</a>
+
+        </div>
+
+        <div class="text-center"> 
+            <p> Para AFND, epsilon = "@"; Sumideros representados por: "S".</p>
+        </div>
+
+        <div class="container" id="styless">
+            <div class="row" id="Quintupla">
+
+                <div id="bordes" class="col-md-6 border-right pt-3">
+                    <h3 class="text-center">Quintupla Automata 1</h3>
+                    <div id="primeraQuintupla1"></div>
+                    <div id="primeraQuintupla2"></div>
+                    <div id="primeraQuintupla3"></div>
+                    <div id="primeraQuintupla4"></div>
+                    <div id="primeraQuintupla5"></div>
+                </div>
+                <h1></h1>
+                <div class="col-md-6 pt-3">
+                    <h3 class="text-center">Quintupla Automata 2</h3>
+                    <div id="segundaQuintupla1"></div>
+                    <div id="segundaQuintupla2"></div>
+                    <div id="segundaQuintupla3"></div>
+                    <div id="segundaQuintupla4"></div>
+                    <div id="segundaQuintupla5"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pb-5 justify-content-center">
+            <div class="col-6 border-right mt-5 my-2">
+
+                <h3 class="text-center mt-2">Complemento</h3>
+                <a onclick="Complemento()" class="btn btn-outline-light mt-4 marginbtn mb-3">Mostrar</a>
+                <div id="rowUnion2" class="row">
+                    <div id="mensajeComplemento" class="ml-3"></div>
+                    <div id="automata1Com" class="ml-3"></div>
+                    <div id="conjuntoComplemento" class="ml-3"></div>
+                    <div id="entradaComplemento" class="ml-3"></div>
+                    <div id="salidaComplemento" class="ml-3"></div>
+                    <div id="lenguajeComplemento" class="ml-3"></div>
+                    <div id="transicionComplemento" class="ml-3"></div>
+
+                    <div id="mensajeComplemento1" class="ml-3"></div>
+                    <div id="conjuntoComplemento1" class="ml-3"></div>
+                    <div id="entradaComplemento1" class="ml-3"></div>
+                    <div id="salidaComplemento1" class="ml-3"></div>
+                    <div id="lenguajeComplemento1" class="ml-3"></div>
+                    <div id="transicionComplemento1" class="ml-3"></div>
+
+                </div>
+            </div>
+
+            <div class="col-6 border-right mt-5 my-2">
+
+                <h3 class="text-center mt-2">Union</h3>
+                <a onclick="union()" class="btn btn-outline-light mt-4 marginbtn mb-3">Mostrar</a>
+                <div id="rowUnion" class="row text-left">
+                    <div id="conjuntoUnion" class=""></div>
+                    <div id="entradaUnion" class=""></div>
+                    <div id="salidaUnion" class=""></div>
+                    <div id="lenguajeUnion" class=""></div>
+                    <div id="transicionUnion" class=""></div>
+                    <div id="mensajeUnionAFD" class=""></div>
+                    <div id="conjuntoUnionAFD" class=""></div>
+                    <div id="entradaUnionAFD" class=""></div>
+                    <div id="salidaUnionAFD" class=""></div>
+                    <div id="lenguajeUnionAFD" class=""></div>
+                    <div id="transicionUnionAFD" class=""></div>
+
+
+                </div>
+
+            </div>
+
+            <div class="col-6 border-right mt-5 my-2">
+
+                <h3 class="text-center mt-2">Simplificar</h3>
+                <a onclick="imprimirSimplificar()" class="btn btn-outline-light mt-4 marginbtn mb-3">Mostrar</a>
+                <div id="rowUnion2" class="row">
+                    <div>
+                        <div id="mensajeSimpli" class=""></div>
+                        <div id="automata1Simpli" class=""></div>
+                        <div id="conjuntoSimpli" class=""></div>
+                        <div id="entradaSimpli" class=""></div>
+                        <div id="salidaSimpli" class=""></div>
+                        <div id="lenguajeSimpli" class=""></div>
+                        <div id="transicionSimpli" class=""></div>
+
+                    </div>
+                    <div>
+                        <div id="mensajeSimpli1" class=""></div>
+                        <div id="automata1Simpli1" class=""></div>
+                        <div id="conjuntoSimpli1" class=""></div>
+                        <div id="entradaSimpli1" class=""></div>
+                        <div id="salidaSimpli1" class=""></div>
+                        <div id="lenguajeSimpli1" class=""></div>
+                        <div id="transicionSimpli1" class=""></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="col-6  my-2 mt-5">
+                <h3 class="text-center mt-2">Concatenacion</h3>
+                <a onclick="concatenacion()" class="btn btn-outline-light mt-4 marginbtn mb-3">Mostrar</a>
+                <div id="rowUnion" class="row text-left">
+                    <div id="mensajeConca" class=""></div>
+                    <div id="conjuntoConca" class=""></div>
+                    <div id="entradaConca" class=""></div>
+                    <div id="salidaConca" class=""></div>
+                    <div id="lenguajeConca" class=""></div>
+                    <div id="transicionConca" class=""></div>
+
+                    <div id="mensajeConcaAFD" class=""></div>
+                    <div id="conjuntoConcaAFD" class=""></div>
+                    <div id="entradaConcaAFD" class=""></div>
+                    <div id="salidaConcaAFD" class=""></div>
+                    <div id="lenguajeConcaAFD" class=""></div>
+                    <div id="transicionConcaAFD" class=""></div>
+                </div>
+            </div>
+
+            <div class="col-6  my-2 mt-5">
+                <h3 class="text-center mt-2">Interseccion</h3>
+                <a onclick="interseccion()" class="btn btn-outline-light mt-4 marginbtn2 mb-3">Mostrar</a>
+                <div id="rowUnion2" class="row text-left">
+                    <div id="mensajeInter" class=""></div>
+                    <div id="conjuntoInter" class=""></div>
+                    <div id="entradaInter" class=""></div>
+                    <div id="salidaInter" class=""></div>
+                    <div id="lenguajeInter" class=""></div>
+                    <div id="transicionInter" class=""></div>
+                </div>
+            </div>
+
+
+            <div class="col-9  my-2 mt-5">
+                <h3 class="text-center mt-2">Pasar de AFND a AFD</h3>
+                <a onclick="Imprimir_AFND_AFD()" class="btn btn-outline-light mt-4 marginbtn1 mb-3">Mostrar</a>
+                <div id="rowUnion" class="row text-left ml-3 justify-content-center">
+                    <div id="bordes2" class="col-12 ml-3 mb-4">
+                        <div id="mensajeGeneral"></div>
+                        <div id="mensajeConvertido" class=""></div>
+                        <div id="conjuntoConvertido" class=""></div>
+                        <div id="entradaConvertido" class=""></div>
+                        <div id="salidaConvertido" class=""></div>
+                        <div id="lenguajeConvertido" class=""></div>
+                        <div id="transicionConvertido" class=""></div>
+                    </div>
+                    <div class="col-12 ml-3 mb-4">
+                        <div id="mensajeConvertido1" class=""></div>
+                        <div id="conjuntoConvertido1" class=""></div>
+                        <div id="entradaConvertido1" class=""></div>
+                        <div id="salidaConvertido1" class=""></div>
+                        <div id="lenguajeConvertido1" class=""></div>
+                        <div id="transicionConvertido1" class=""></div>
+                    </div>
+                    <div class="col-12 ml-3 mb-4">
+                        <div id="mensajeAFNDSimpli" class=""></div>
+                        <div id="conjuntoAFNDSimpli" class=""></div>
+                        <div id="entradaAFNDSimpli" class=""></div>
+                        <div id="salidaAFNDSimpli" class=""></div>
+                        <div id="lenguajeAFNDSimpli" class=""></div>
+                        <div id="transicionAFNDSimpli" class=""></div>
+                    </div>
+                    <div class="col-12 ml-3 mb-4">
+                        <div id="mensajeAFNDSimpli2" class=""></div>
+                        <div id="conjuntoAFNDSimpli2" class=""></div>
+                        <div id="entradaAFNDSimpli2" class=""></div>
+                        <div id="salidaAFNDSimpli2" class=""></div>
+                        <div id="lenguajeAFNDSimpli2" class=""></div>
+                        <div id="transicionAFNDSimpli2" class=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+</body>
+</html>
+
+
+<script src="js/appautomata.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/c8152ea011.js" crossorigin="anonymous"></script>
